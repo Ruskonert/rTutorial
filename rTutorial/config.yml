@@ -1,0 +1,30 @@
+# rTutorial main configuration
+Main:
+  Config-Version: 7
+  Run-First-Join-Player: false
+  Block-Movement: true
+  Block-All-Commands: true
+  Broadcast-Complete-Tutorial: false
+  Edit-Complete: false
+  Default-Delay-Seconds: 6
+  Default-Cooldown-Seconds: 5
+  Sound-Disabled: true
+Compatibles:
+  TitleAPI: false
+  Vault: true
+  Economy: false
+# Please modify if your server enabled the plugin that associated with Economy.
+Result:
+  Commands:
+  - 'Console: broadcast %player% Tutorial Complete.'
+  - 'Money: 100'
+  - 'spawn'
+  Items:
+    0:
+      ID: 264
+      DATA-VALUE: 0
+      Amounts: 2
+    1:
+      ID: 266
+      DATA-VALUE: 0
+      Amounts: 2
