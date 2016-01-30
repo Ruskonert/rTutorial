@@ -1,5 +1,6 @@
 package com.ReanKR.rTutorial.Function;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,12 +9,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.ReanKR.rTutorial.rTutorial;
 import com.ReanKR.rTutorial.API.EconomyAPI;
 import com.ReanKR.rTutorial.File.FileLoader;
+import com.ReanKR.rTutorial.Util.FileSection;
 import com.ReanKR.rTutorial.Util.SoundCreative;
 import com.ReanKR.rTutorial.Util.SubSection;
 import com.connorlinfoot.titleapi.TitleAPI;
@@ -27,6 +30,8 @@ public class ProgressTutorial
 	public Map<String, GameMode> PlayerGameMode = new HashMap<String, GameMode>();
 	public Map<String, Float> PlayerSpeed = new HashMap<String, Float>();
 	public Map<String, Float> PlayerFlySpeed = new HashMap<String, Float>();
+	private FileSection FS = new FileSection();
+	private File PlayerFile = new File("plugins/rTutorial/Player.yml");
 
 	rTutorial plugin;
 
@@ -72,6 +77,8 @@ public class ProgressTutorial
 		PlayerGameMode.put(p.getName(), p.getGameMode());
 		PlayerSpeed.put(p.getName(), p.getWalkSpeed());
 		PlayerFlySpeed.put(p.getName(), p.getFlySpeed());
+		rTutorial.ProgressingTutorial.put(p, true);
+		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Status", "Cooldown");
 	}
 
 	public void Working(final Player p)
@@ -84,6 +91,7 @@ public class ProgressTutorial
 			{
 				if(Progress.get(p.getName()) >= rTutorial.MethodAmount)
 				{
+					rTutorial.ProgressingTutorial.remove(p);
 					endTask(p, true);
 					Result(p);
 				}
@@ -107,6 +115,7 @@ public class ProgressTutorial
 				}
 			}
 		}, 0L, rTutorial.DefaultDelaySeconds*20L);
+		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Status", "Working");
 		taskID.put(p.getName(), tid);
 		Progress.put(p.getName(), 0);
 		p.setGameMode(GameMode.SPECTATOR);
@@ -139,6 +148,8 @@ public class ProgressTutorial
 		{
 			p.getInventory().addItem(Items);
 		}
+		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Status", "Result");
+		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Completed", true);
 	}
 	
 	public void endTask(Player p, boolean CompleteTutorial)

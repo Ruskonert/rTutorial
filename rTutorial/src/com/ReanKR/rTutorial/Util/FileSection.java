@@ -37,4 +37,18 @@ public class FileSection
   {
     return CS.getConfigurationSection(Name);
   }
+  
+  public static void SetKey(File file, ConfigurationSection CS, String Key, Object object)
+  {
+	  YamlConfiguration Yaml = YamlConfiguration.loadConfiguration(file);
+	  CS.set(Key, object);
+	  try
+	  {
+		 Yaml.save(file);
+	  }
+	  catch(Exception e)
+	  {
+		  e.printStackTrace();
+	  }
+  }
 }

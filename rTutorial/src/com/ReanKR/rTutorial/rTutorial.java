@@ -44,12 +44,14 @@ public class rTutorial extends JavaPlugin implements Listener
 	  public static int MethodAmount = 0;
 	  public static Map<String, String> MainMessages;
 	  public static HashMap<String, Boolean> TutorialComplete;
+	  public static HashMap<Player, Boolean> ProgressingTutorial;
 	  public static HashMap<Player, Boolean> IsCreateNewLocation;
 	  public static HashMap<Player, Boolean> SavedNewLocation;
 	  public static HashMap<Player, Integer> CreatingNewLocation;
 	  public static HashMap<Player, String> MainMessage;
 	  public static HashMap<Player, String> SubMessage;
 	  public static HashMap<Player, String> TutorialStatus;
+	  public static rTutorial RTutorial;
 	  public static String Prefix = "」e[」9r」aT」futorial」e]」f ";
 	  public static Plugin plugin;
 	  private FileSection FS = new FileSection();
@@ -64,6 +66,7 @@ public class rTutorial extends JavaPlugin implements Listener
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void onEnable()
 	{
+		RTutorial = this;
 	    plugin = this;
 	    CompatiblePlugins = new boolean[4];
 	    ErrorReporting = new ArrayList();
@@ -71,6 +74,7 @@ public class rTutorial extends JavaPlugin implements Listener
 	    ResultItems = new ArrayList();
 	    LocationMethod = new ArrayList();
 	    MessageMethod = new ArrayList();
+	    ProgressingTutorial = new HashMap();
 	    TutorialComplete = new HashMap();
 	    TutorialStatus = new HashMap();
 	    IsCreateNewLocation = new HashMap();

@@ -15,6 +15,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
 
 public class rTutorialListener implements Listener
@@ -35,6 +36,18 @@ public class rTutorialListener implements Listener
 	  @EventHandler
 	  public void PlayerCommand(PlayerCommandPreprocessEvent e)
 	  {
+	  }
+	  
+	  @EventHandler
+	  public void PlayerQuit(PlayerQuitEvent e)
+	  {
+		  if(rTutorial.ProgressingTutorial.containsKey(e.getPlayer()))
+		  {
+			  if(rTutorial.ProgressingTutorial.get(e.getPlayer()))
+			  {
+				  
+			  }
+		  }
 	  }
 	
 	  @EventHandler
