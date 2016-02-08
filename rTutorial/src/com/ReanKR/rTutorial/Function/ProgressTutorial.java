@@ -148,8 +148,8 @@ public class ProgressTutorial
 		{
 			p.getInventory().addItem(Items);
 		}
-		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Status", "Result");
-		FileSection.SetKey(PlayerFile, FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()), "Completed", true);
+		FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()).set("Status", "Result");
+		FS.PlusSelect(YamlConfiguration.loadConfiguration(PlayerFile), p.getUniqueId().toString()).set("Completed", true);
 	}
 	
 	public void endTask(Player p, boolean CompleteTutorial)

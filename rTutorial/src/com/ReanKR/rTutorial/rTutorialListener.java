@@ -84,6 +84,10 @@ public class rTutorialListener implements Listener
 	    }
 	    ConfigurationSection PlayerInfo = fs.PlusSelect(CS, UUID);
 	    rTutorial.TutorialComplete.put(UUID, Boolean.valueOf(PlayerInfo.getBoolean("Completed")));
+	    if(! PlayerInfo.get("Status").toString().equalsIgnoreCase("None"))
+	    {
+	    	
+	    }
 	  }
 	  
 		@EventHandler

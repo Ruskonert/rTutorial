@@ -119,13 +119,11 @@ public class rTutorial extends JavaPlugin implements Listener
 				Player player = (Player)Sender;
 				if(! rTutorial.EditComplete)
 				{
-					/*
-					for(Player players: Bukkit.getOnlinePlayers())
+					if(! rTutorial.TutorialComplete.get(player).booleanValue())
 					{
-					players.hidePlayer(player);
+						for(Player players: Bukkit.getOnlinePlayers()) players.hidePlayer(player);
+						PT.TutorialCooldown(player);
 					}
-					*/
-					PT.TutorialCooldown(player);
 					return true;
 				}
 				else
