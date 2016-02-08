@@ -1,6 +1,7 @@
 package com.ReanKR.rTutorial;
 
 import com.ReanKR.rTutorial.Util.FileSection;
+import com.ReanKR.rTutorial.Util.PlayerBackup;
 import com.ReanKR.rTutorial.Util.SoundCreative;
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class rTutorialListener implements Listener
 		  {
 			  if(rTutorial.ProgressingTutorial.get(e.getPlayer()))
 			  {
-				  
+				  PlayerBackup.StatusBackup(e.getPlayer());
 			  }
 		  }
 	  }
@@ -86,8 +87,10 @@ public class rTutorialListener implements Listener
 	    rTutorial.TutorialComplete.put(UUID, Boolean.valueOf(PlayerInfo.getBoolean("Completed")));
 	    if(! PlayerInfo.get("Status").toString().equalsIgnoreCase("None"))
 	    {
-	    	
-	    }
+	    	player.sendMessage(rTutorial.Prefix + "튜토리얼을 아직 완료하지 못했습니다.");
+	    	player.sendMessage(rTutorial.Prefix + "튜토리얼을 계속하시려면 /tutorial를 입력하여 주십시오.");
+	    	return;
+	    } 
 	  }
 	  
 		@EventHandler

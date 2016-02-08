@@ -36,16 +36,16 @@ public class rTutorial extends JavaPlugin implements Listener
 	  public static int DefaultCooldownSeconds = 5;
 	  public static boolean[] CompatiblePlugins;
 	  public static boolean SoundDisabled = true;
-	  public static List<String> ResultCommands;
-	  public static List<ItemStack> ResultItems;
-	  public static List<String> ErrorReporting;
-	  public static List<String> LocationMethod;
-	  public static List<String> MessageMethod;
+	  public static List<String> ResultCommands; // Save data: result commands
+	  public static List<ItemStack> ResultItems; // Save data: reward items
+	  public static List<String> ErrorReporting; // Save data: Error Collection
+	  public static List<String> LocationMethod; // Save data: World,X,Y,Z,Pitch,Yaw
+	  public static List<String> MessageMethod; // Save data: Main Message, Sub Message
 	  public static int MethodAmount = 0;
-	  public static Map<String, String> MainMessages;
-	  public static HashMap<String, Boolean> TutorialComplete;
-	  public static HashMap<Player, Boolean> ProgressingTutorial;
-	  public static HashMap<Player, Boolean> IsCreateNewLocation;
+	  public static Map<String, String> MainMessages; 
+	  public static HashMap<String, Boolean> TutorialComplete; // Is Player completed tutorial
+	  public static HashMap<Player, Boolean> ProgressingTutorial; // Showing the player that tutorial progressing method
+	  public static HashMap<Player, Boolean> IsCreateNewLocation;  // Enabled Blocking AsyncChatEvent when creating new data
 	  public static HashMap<Player, Boolean> SavedNewLocation;
 	  public static HashMap<Player, Integer> CreatingNewLocation;
 	  public static HashMap<Player, String> MainMessage;

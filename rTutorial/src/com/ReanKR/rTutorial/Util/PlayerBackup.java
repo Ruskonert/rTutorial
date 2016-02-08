@@ -16,7 +16,7 @@ public class PlayerBackup
 {
 	private ProgressTutorial PT = new ProgressTutorial(rTutorial.RTutorial);
 	@SuppressWarnings("deprecation")
-	public void StatusBackup(Player player)
+	public static void StatusBackup(Player player)
 	{
 		
 		if(! rTutorial.RTutorial.getServer().getOfflinePlayer(player.getName()).isOnline())
