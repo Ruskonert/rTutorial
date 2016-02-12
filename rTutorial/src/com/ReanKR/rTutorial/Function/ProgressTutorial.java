@@ -17,6 +17,7 @@ import com.ReanKR.rTutorial.rTutorial;
 import com.ReanKR.rTutorial.API.EconomyAPI;
 import com.ReanKR.rTutorial.File.FileLoader;
 import com.ReanKR.rTutorial.Util.FileSection;
+import com.ReanKR.rTutorial.Util.PlayerBackup;
 import com.ReanKR.rTutorial.Util.SoundCreative;
 import com.ReanKR.rTutorial.Util.SubSection;
 import com.connorlinfoot.titleapi.TitleAPI;
@@ -48,6 +49,11 @@ public class ProgressTutorial
 			@Override
 			public void run()
 			{
+				if(! plugin.getServer().getOfflinePlayer(p.getName()).isOnline())
+				{
+					PlayerBackup.StatusBackup(p);
+					endTask(p, false);
+				}
 				if(Progress.get(p.getName()) <= 0)
 				{
 					endTask(p, false);

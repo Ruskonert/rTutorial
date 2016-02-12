@@ -23,7 +23,7 @@ public class PlayerBackup
 		{
 			if(rTutorial.ProgressingTutorial.containsKey(player))
 			{
-				Bukkit.getConsoleSender().sendMessage(rTutorial.Prefix + "¡×cPlayer name : " + player.getName() + "does not exist. Saving Player data");
+				Bukkit.getConsoleSender().sendMessage(rTutorial.Prefix + "¡×cPlayer name : " + player.getName() + "does not playing in the game. Saving temp data");
 			}
 		}
 		else
@@ -43,7 +43,7 @@ public class PlayerBackup
 		}
 		YamlConfiguration Yaml = YamlConfiguration.loadConfiguration(file);
 		ConfigurationSection CS = Yaml;
-		if(CS.contains(player.getName())) CS.createSection(player.getName());
+		if(! CS.contains(player.getName())) CS.createSection(player.getName());
 		CS = FS.PlusSelect(CS, player.getName());
 		CS.set("FlySpeed", PT.PlayerFlySpeed.get(player.getName()));
 		CS.set("WalkSpeed", PT.PlayerSpeed.get(player.getName()));
